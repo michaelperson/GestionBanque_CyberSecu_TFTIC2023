@@ -8,25 +8,26 @@ using System.Threading.Tasks;
 namespace GestionBanque.Models
 {
     internal class Banque
-    { 
-        private Dictionary<string, Courant> _comptes= new Dictionary<string, Courant>(); //Key= Numéro de compte
-     
-        
+    {
+        #region Fields
+        private Dictionary<string, Courant> _comptes = new Dictionary<string, Courant>(); //Key= Numéro de compte 
+        #endregion
+        #region Properties
         public Courant? this[string numero]
         {
-            get {
+            get
+            {
 
-                return _comptes.TryGetValue(numero, out Courant? courant)?courant:null;
+                return _comptes.TryGetValue(numero, out Courant? courant) ? courant : null;
             }
             private set
             {
                 _comptes[numero] = value;
             }
         }
-
-         
-
         public string Nom { get; set; }
+        #endregion
+        #region Methods
         /// <summary>
         /// Permet d'ajouter un compte à la banque
         /// </summary>
@@ -43,7 +44,7 @@ namespace GestionBanque.Models
             else
             {
                 //Oui -> je balance une exception pour que le code appelant puisse prévenir le user
-              throw new InvalidProgramException($"Le compte {c.Numero} est déjà présent!");
+                throw new InvalidProgramException($"Le compte {c.Numero} est déjà présent!");
             }
         }
 
@@ -54,13 +55,14 @@ namespace GestionBanque.Models
             if (_comptes.ContainsKey(numero))
             {
                 //Si oui ==> DESTRUCTION!!!
-                _comptes.Remove(numero); 
+                _comptes.Remove(numero);
             }
             else
             {
                 //Sinon on prévient l'extérieur
                 throw new InvalidProgramException($"Ce compte {numero} n'existe pas!");
             }
-        }
+        } 
+        #endregion
     }
 }

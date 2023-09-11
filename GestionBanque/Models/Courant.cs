@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -68,5 +69,28 @@ namespace GestionBanque.Models
         }
         #endregion
 
+        #region Surcharge Operators
+
+        public static double operator +(Courant c1, Courant c2)
+        {
+            //Clair préci, rapide et maintenable
+            //if (c1.Solde < 0 && c2.Solde >= 0) return c2.Solde;
+            //if (c2.Solde < 0 && c1.Solde >= 0) return c1.Solde;
+            //if (c2.Solde < 0 && c1.Solde < 0) return 0;
+            //return c1.Solde + c2.Solde;
+
+            //Top puisque c'est moi qui l'ai écrit :p
+            return (c1.Solde > 0 ? c1.Solde : 0) + (c2.Solde > 0 ? c2.Solde : 0);
+           
+            
+            //Joli pour le style mais non maintenable
+            // return (c1.Solde < 0 && c2.Solde >= 0) ? c2.Solde : c2.Solde < 0 && c1.Solde >= 0 ? c1.Solde : c2.Solde < 0 && c1.Solde < 0 ? 0 : c1.Solde + c2.Solde;
+
+
+        }
+
+         
+
+        #endregion
     }
 }

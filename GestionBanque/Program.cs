@@ -2,6 +2,7 @@
 
 Banque TfPognon = new Banque();
 TfPognon.Nom = "FricSA";
+
 Personne p1 = new Personne();
 p1.Nom = "Pendragon";
 p1.Prenom = "Arthur";
@@ -11,7 +12,22 @@ Courant c1 = new Courant();
 c1.Numero = "BE1234";
 c1.Titulaire = p1;
 c1.Depot(500);
+
+//Autre manière d'affecter des valeurs aux propriétés après instanciation de la classe
+Courant c2 = new Courant()
+{
+	Numero = "BE456",
+	Titulaire = p1
+};
+c2.Depot(500.10);
+ 
+
 TfPognon.Ajouter(c1);
+TfPognon.Ajouter(c2);
+
+double MonArgent = c1 + c2; 
+Console.WriteLine($"Total de mes avoirs : {MonArgent} €");
+
 try
 {
 	TfPognon.Ajouter(c1);
