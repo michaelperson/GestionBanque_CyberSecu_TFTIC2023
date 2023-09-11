@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -86,10 +87,12 @@ namespace GestionBanque.Models
             //Joli pour le style mais non maintenable
             // return (c1.Solde < 0 && c2.Solde >= 0) ? c2.Solde : c2.Solde < 0 && c1.Solde >= 0 ? c1.Solde : c2.Solde < 0 && c1.Solde < 0 ? 0 : c1.Solde + c2.Solde;
 
-
         }
 
-         
+         public static double operator + (Courant toto, double lasomme)
+        {
+            return (toto.Solde > 0 ? toto.Solde : 0) + lasomme;
+        }
 
         #endregion
     }

@@ -25,6 +25,9 @@ c2.Depot(500.10);
 TfPognon.Ajouter(c1);
 TfPognon.Ajouter(c2);
 
+TfPognon.AvoirDesCompte(p1);
+
+
 double MonArgent = c1 + c2; 
 Console.WriteLine($"Total de mes avoirs : {MonArgent} €");
 

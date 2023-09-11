@@ -63,6 +63,24 @@ namespace GestionBanque.Models
                 throw new InvalidProgramException($"Ce compte {numero} n'existe pas!");
             }
         } 
+
+        public double AvoirDesCompte(Personne titus)
+        {
+            double sommes = 0;
+            ///parcourir mes comptes
+            ///si titulaire = titus
+            // Ajouter les soles
+            
+            foreach (KeyValuePair<string,Courant> item in _comptes)
+            {
+                //PAUSE ?
+                if(item.Value.Titulaire==titus)
+                {  // double = double + Courant(obj)       
+                    sommes = (item.Value + sommes);
+                }
+            }
+            return sommes;
+        }
         #endregion
     }
 }
