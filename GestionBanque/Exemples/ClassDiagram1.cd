@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GestionBanque.Exemples.Forme">
+    <Position X="6.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAAAAAACAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exemples\Forme.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GestionBanque.Exemples.Rectangle">
+    <Position X="5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAIAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Exemples\Forme.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GestionBanque.Exemples.Carre">
+    <Position X="5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exemples\Forme.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GestionBanque.Exemples.Triangle">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAoAEAAAA=</HashCode>
+      <FileName>Exemples\Forme.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 
 namespace GestionBanque.Models
 {
-    public class Courant
+    internal class Courant : Compte
     {
-        #region Champs privés
-        private double _solde;
+        #region Champs privés 
         private double _ligneDeCredit;
         #endregion
         
@@ -19,17 +18,7 @@ namespace GestionBanque.Models
         //produit le même résultat qu'une propfull à la compilation
         //il s'agit juste d'un raccourci d'écriture
         
-        #region Propriétés
-
-        public string Numero { get; set; }
-
-        //raccourci pour une propriété complète => taper propf > tab > tab
-
-        public double Solde
-        {
-            get { return _solde; }
-            private set { _solde = value; }
-        }
+        #region Propriétés     
 
 
         public double LigneDeCredit
@@ -44,30 +33,23 @@ namespace GestionBanque.Models
             }
         }
 
-        public Personne Titulaire { get; set; }
+   
 
         #endregion
 
         #region Methodes
-        public void Retrait(double Montant)
+        public override void Retrait(double Montant)
         {
 
-            if (Montant < 0) 
-                Console.WriteLine("Montant incorrect");
-            else
-            {
+             
                 if (Montant <= Solde + LigneDeCredit)
-                    Solde -= Montant;
+                   base.Retrait(Montant);
                 else Console.WriteLine("Solde insuffisant");
-            }
+             
 
         }
 
-        public void Depot(double Montant)
-        {
-            if (Montant >= 0)
-                Solde += Montant;
-        }
+         
         #endregion
 
         #region Surcharge Operators
@@ -89,10 +71,7 @@ namespace GestionBanque.Models
 
         }
 
-         public static double operator + (Courant toto, double lasomme)
-        {
-            return (toto.Solde > 0 ? toto.Solde : 0) + lasomme;
-        }
+        
 
         #endregion
     }

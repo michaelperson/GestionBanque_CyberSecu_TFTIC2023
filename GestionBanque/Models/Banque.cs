@@ -10,15 +10,15 @@ namespace GestionBanque.Models
     internal class Banque
     {
         #region Fields
-        private Dictionary<string, Courant> _comptes = new Dictionary<string, Courant>(); //Key= Numéro de compte 
+        private Dictionary<string, Compte> _comptes = new Dictionary<string, Compte>(); //Key= Numéro de compte 
         #endregion
         #region Properties
-        public Courant? this[string numero]
+        public Compte? this[string numero]
         {
             get
             {
 
-                return _comptes.TryGetValue(numero, out Courant? courant) ? courant : null;
+                return _comptes.TryGetValue(numero, out Compte? Compte) ? Compte : null;
             }
             private set
             {
@@ -31,9 +31,9 @@ namespace GestionBanque.Models
         /// <summary>
         /// Permet d'ajouter un compte à la banque
         /// </summary>
-        /// <param name="c">Le compte a ajouter <see cref="Courant"/></param>
+        /// <param name="c">Le compte a ajouter <see cref="Compte"/></param>
         /// <exception cref="Exception">Sera lancée si le compte est déjà présent dans la banque</exception>
-        public void Ajouter(Courant c)
+        public void Ajouter(Compte c)
         {
             //Est-ce que le compte est déjà présent ?
             if (!_comptes.ContainsKey(c.Numero))
@@ -66,16 +66,11 @@ namespace GestionBanque.Models
 
         public double AvoirDesCompte(Personne titus)
         {
-            double sommes = 0;
-            ///parcourir mes comptes
-            ///si titulaire = titus
-            // Ajouter les soles
-            
-            foreach (KeyValuePair<string,Courant> item in _comptes)
-            {
-                //PAUSE ?
+            double sommes = 0;            
+            foreach (KeyValuePair<string,Compte> item in _comptes)
+            {                 
                 if(item.Value.Titulaire==titus)
-                {  // double = double + Courant(obj)       
+                {  // double = double + Compte(obj)       
                     sommes = (item.Value + sommes);
                 }
             }

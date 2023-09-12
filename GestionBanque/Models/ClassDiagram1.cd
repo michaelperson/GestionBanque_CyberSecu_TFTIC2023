@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GestionBanque.Models.Banque" Collapsed="true">
+    <Position X="7.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAABAAAAAAEAACAAAAAAAACAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Models\Banque.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GestionBanque.Models.Compte">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAABAAAAAAAAABAACAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Models\Compte.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GestionBanque.Models.Courant">
+    <Position X="4.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAICABAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Courant.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GestionBanque.Models.Epargne">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Epargne.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GestionBanque.Models.Personne" Collapsed="true">
+    <Position X="9" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAABCAAAAAAACAAAAAAQAI=</HashCode>
+      <FileName>Models\Personne.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
