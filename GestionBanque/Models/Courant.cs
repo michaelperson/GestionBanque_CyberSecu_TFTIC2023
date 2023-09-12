@@ -34,7 +34,15 @@ namespace GestionBanque.Models
             }
         }
 
-   
+        public override double taux_interet
+        {
+            get
+            {
+                return taux_interet;
+            }
+
+
+        }
 
         #endregion
 

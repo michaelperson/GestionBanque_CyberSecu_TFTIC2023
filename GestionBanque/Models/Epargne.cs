@@ -9,8 +9,16 @@ namespace GestionBanque.Models
     internal class Epargne : Compte
     {
         #region Props
-     
-     
+        public override double taux_interet
+        {
+            get
+            {
+                return 0.45;
+            }
+
+             
+        }
+
         public DateTime DateDernierRetrait { get; set; }
      
         #endregion

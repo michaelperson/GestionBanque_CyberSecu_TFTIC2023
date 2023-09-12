@@ -12,6 +12,7 @@ namespace GestionBanque.Models
         public string Numero { get; set; }
         public double Solde { get; private set; }
         public Personne Titulaire { get; set; }
+        public abstract double taux_interet { get;  }
         #endregion
 
 
