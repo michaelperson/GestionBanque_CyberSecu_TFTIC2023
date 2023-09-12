@@ -11,13 +11,15 @@ p1.Nom = "Pendragon";
 p1.Prenom = "Arthur";
 p1.DateNaiss = DateTime.Now;
 
-Courant c1 = new Courant();
+Compte c1 = new Courant();
 c1.Numero = "BE1234";
 c1.Titulaire = p1;
 c1.Depot(500);
 
-Autre manière d'affecter des valeurs aux propriétés après instanciation de la classe
-Courant c2 = new Courant()
+c1.Retrait(1856);
+ 
+//Autre manière d'affecter des valeurs aux propriétés après instanciation de la classe
+Compte c2 = new Epargne()
 			 {
 				 Numero = "BE456",
 				 Titulaire = p1
@@ -31,7 +33,7 @@ TfPognon.Ajouter(c2);
 TfPognon.AvoirDesCompte(p1);
 
 
-double MonArgent = c1 + c2;
+ 
 Console.WriteLine($"Total de mes avoirs : {MonArgent} €");
 
 try
@@ -102,3 +104,5 @@ Console.WriteLine($"Le solde du compte {c1.Numero} de {c1.Titulaire.Nom} est de 
 
 //} 
 #endregion
+
+ 

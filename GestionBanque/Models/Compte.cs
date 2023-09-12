@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GestionBanque.Models
 {
-    internal class Compte
+    internal abstract class Compte
     {
         #region Props
         public string Numero { get; set; }
@@ -27,6 +27,16 @@ namespace GestionBanque.Models
             if (Montant < 0) throw new InvalidOperationException("Le montant doit être positif");
             Solde -= Montant;
         }
+
+        public void AppliquerInteret()
+        {
+            Solde += (CalculerInteret() * Solde);
+        }
+
+        #region Abstract
+        protected abstract double CalculerInteret();
+
+        #endregion
         #endregion
 
         #region Surcharge D'opérateur

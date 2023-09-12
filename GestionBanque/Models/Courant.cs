@@ -12,8 +12,9 @@ namespace GestionBanque.Models
     {
         #region Champs privés 
         private double _ligneDeCredit;
+
         #endregion
-        
+        public static double Interet;
         //raccourci pour auto-prop => taper prop > tab
         //produit le même résultat qu'une propfull à la compilation
         //il s'agit juste d'un raccourci d'écriture
@@ -48,8 +49,11 @@ namespace GestionBanque.Models
              
 
         }
+        protected override double CalculerInteret()
+        {
+            return Solde >0? 0.3 : 0.975;
+        }
 
-         
         #endregion
 
         #region Surcharge Operators

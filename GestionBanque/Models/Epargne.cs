@@ -23,7 +23,12 @@ namespace GestionBanque.Models
             base.Retrait(Montant); //Seul le parent a le droit de modifier le solde :)
             DateDernierRetrait= DateTime.Now;
         }
-        
+
+        protected override double CalculerInteret()
+        {
+            return 0.45;
+        }
+
         #endregion
     }
 }
