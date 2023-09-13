@@ -1,4 +1,5 @@
 ﻿using GestionBanque.Exemples;
+using GestionBanque.Interfaces;
 using GestionBanque.Models;
 using System.Collections;
 
@@ -17,7 +18,21 @@ c1.Titulaire = p1;
 c1.Depot(500);
 
 c1.Retrait(1856);
- 
+//Je ne choisis pas le contexte de la demande de prêt
+//c1.DemanderPret(1000);
+
+//En tant que client je veux demander un prêt
+((ICustomer)c1).DemandePret(1000);
+
+//En tant que banquier je veux demander un prêt
+
+((IBanker)c1).DemandePret(1000);
+
+
+
+
+
+
 //Autre manière d'affecter des valeurs aux propriétés après instanciation de la classe
 Compte c2 = new Epargne()
 			 {
@@ -34,7 +49,7 @@ TfPognon.AvoirDesCompte(p1);
 
 
  
-Console.WriteLine($"Total de mes avoirs : {MonArgent} €");
+ 
 
 try
 {
@@ -45,7 +60,7 @@ catch (InvalidProgramException ex)
 	Console.WriteLine(ex.Message);
 }
 
-Courant? recup = TfPognon["BE1234"];
+ 
 
 
 Console.WriteLine($"Le solde du compte {c1.Numero} de {c1.Titulaire.Nom} est de {c1.Solde}");
@@ -55,7 +70,7 @@ Console.WriteLine($"Le solde du compte {c1.Numero} de {c1.Titulaire.Nom} est de 
 c1.Retrait(500);
 Console.WriteLine($"Le solde du compte {c1.Numero} de {c1.Titulaire.Nom} est de {c1.Solde}");
 
-c1.LigneDeCredit = 500;
+((Courant)c1).LigneDeCredit = 500;
 c1.Retrait(1000);
 Console.WriteLine($"Le solde du compte {c1.Numero} de {c1.Titulaire.Nom} est de {c1.Solde}");
 #endregion

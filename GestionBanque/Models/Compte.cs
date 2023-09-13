@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestionBanque.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,13 +7,18 @@ using System.Threading.Tasks;
 
 namespace GestionBanque.Models
 {
-    internal abstract class Compte
+    internal abstract class Compte : IBanker, ICustomer
     {
         #region Props
         public string Numero { get; set; }
         public double Solde { get; private set; }
         public Personne Titulaire { get; set; }
         public abstract double taux_interet { get;  }
+
+        public abstract double LigneDeCredit
+        {
+            get;set;
+        }
         #endregion
 
 
@@ -31,12 +37,40 @@ namespace GestionBanque.Models
 
         public void AppliquerInteret()
         {
-            Solde += (CalculerInteret() * Solde);
+            Solde += (taux_interet * Solde);
         }
 
         #region Abstract
         protected abstract double CalculerInteret();
 
+
+
+        #endregion
+        #region Implements
+        private bool DemanderPret(double Montant)
+        {
+            if ((Montant - Solde) > 1500) return false;
+            else return true;
+        }
+        bool IBanker.DemandePret(double Montant)
+        {
+            if (DemanderPret(Montant))
+            { 
+                Console.WriteLine($"Demander à la centrale la possibilité d'un prêt de {Montant}");
+                return true;
+            }
+            else return false;
+        }
+
+        bool ICustomer.DemandePret(double Montant)
+        {
+            if (DemanderPret(Montant))
+            {
+                Console.WriteLine($"Demander au banquier la possibilité d'un prêt de {Montant}");
+                return true; 
+            }
+            else return false;
+        }
         #endregion
         #endregion
 

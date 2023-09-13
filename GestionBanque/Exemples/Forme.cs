@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace GestionBanque.Exemples
 {
-    internal abstract class Forme
+    internal abstract class Forme : IForme
     {
         protected string Nom { get; set; }
         public void setNom(string n)
         {
             this.Nom = n;
-        } 
+        }
 
-        public string getNom() { return $"Nom :{this.Nom}";}
+        public string getNom() { return $"Nom :{this.Nom}"; }
 
         public abstract int Aire();//Méthode sans code, obligeant les enfants de créer la logique de la fonction  avec leur propre code
     }

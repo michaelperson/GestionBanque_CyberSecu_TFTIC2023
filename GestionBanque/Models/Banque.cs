@@ -47,8 +47,6 @@ namespace GestionBanque.Models
                 throw new InvalidProgramException($"Le compte {c.Numero} est déjà présent!");
             }
         }
-
-
         public void Supprimer(string numero)
         {
             //Est-ce que le compte est déjà présent ?
@@ -63,7 +61,6 @@ namespace GestionBanque.Models
                 throw new InvalidProgramException($"Ce compte {numero} n'existe pas!");
             }
         } 
-
         public double AvoirDesCompte(Personne titus)
         {
             double sommes = 0;            

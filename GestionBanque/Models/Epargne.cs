@@ -20,7 +20,20 @@ namespace GestionBanque.Models
         }
 
         public DateTime DateDernierRetrait { get; set; }
-     
+
+        public override double LigneDeCredit
+        {
+            get
+            {
+                return 0; 
+            }
+
+            set
+            {
+                throw new InvalidOperationException();
+            }
+        }
+
         #endregion
 
         #region Methods
@@ -34,7 +47,7 @@ namespace GestionBanque.Models
 
         protected override double CalculerInteret()
         {
-            return 0.45;
+            return taux_interet;
         }
 
         #endregion
