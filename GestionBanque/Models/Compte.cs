@@ -1,4 +1,5 @@
-﻿using GestionBanque.Interfaces;
+﻿using GestionBanque.Exceptions;
+using GestionBanque.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,8 +23,7 @@ namespace GestionBanque.Models
             public Compte(string numero, Personne titulaire)
             {
                 Numero= numero;
-                Titulaire= titulaire;
-            //throw new Exception("Qué passa");
+                Titulaire= titulaire; 
             }
             public Compte(string numero, Personne titulaire, double solde) : this(numero, titulaire)         
             {             
@@ -34,13 +34,13 @@ namespace GestionBanque.Models
         #region Methods
         public void Depot(double Montant)
         {
-            if (Montant < 0) throw new InvalidOperationException("Le montant doit être positif");
+            if (Montant < 0) throw new ArgumentOutOfRangeException("Le montant doit être positif");
             Solde += Montant;
         }
 
         public virtual void Retrait(double Montant)
         {
-            if (Montant < 0) throw new InvalidOperationException("Le montant doit être positif");
+            if (Montant < 0) throw new ArgumentOutOfRangeException("Le montant doit être positif");
             Solde -= Montant;
         }
 

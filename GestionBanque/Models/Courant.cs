@@ -45,10 +45,11 @@ namespace GestionBanque.Models
             get { return _ligneDeCredit; }
             private set
             {
-                if (value > 0)
-                {
+
+                if (value < 0) throw new InvalidOperationException("La ligne de crédit doit être positive");
+                
                     _ligneDeCredit = value;
-                }
+                
             }
         }
 
@@ -67,12 +68,9 @@ namespace GestionBanque.Models
         #region Methodes
         public override void Retrait(double Montant)
         {
-
-             
                 if (Montant <= Solde + LigneDeCredit)
                    base.Retrait(Montant);
-                else Console.WriteLine("Solde insuffisant");
-             
+                else throw new SoldeInsuffisantException();
 
         }
         protected override double CalculerInteret()

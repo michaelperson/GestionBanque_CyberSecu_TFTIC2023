@@ -43,9 +43,23 @@ finally
 
     }
 }
-c1.Depot(500);
+try
+{
+	c1.Depot(-500);
+}
+catch (ArgumentOutOfRangeException ex)
+{
+	Console.WriteLine(ex.Message);
+}
 
-c1.Retrait(1856);
+try
+{
+	c1.Retrait(1856);
+}
+catch (SoldeInsuffisantException )
+{
+	Console.WriteLine("Votre solde est insuffisant");
+}
 //Je ne choisis pas le contexte de la demande de prêt
 //c1.DemanderPret(1000);
 
