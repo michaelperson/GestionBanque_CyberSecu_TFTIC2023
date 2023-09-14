@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestionBanque.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
@@ -12,20 +13,37 @@ namespace GestionBanque.Models
     {
         #region Champs privés 
         private double _ligneDeCredit;
-
-        #endregion
         public static double Interet;
+        #endregion
+
+
+        #region Constructors
+        public Courant(string numero, Personne titulaire) : base(numero, titulaire)
+        {
+        }
+
+        //public Courant(string numero, Personne titulaire, double solde) : base(numero, titulaire, solde)
+        //{
+        //} 
+
+        public Courant (string numero, Personne titulaire,  double ligneCredit):this(numero,titulaire)
+        {
+            if (ligneCredit > 5000) throw new LigneDeCreditException(titulaire, "Vous dépasser le max pour une ligne de crédit");
+            LigneDeCredit= ligneCredit;
+        }
+        #endregion
+
         //raccourci pour auto-prop => taper prop > tab
         //produit le même résultat qu'une propfull à la compilation
         //il s'agit juste d'un raccourci d'écriture
-        
+
         #region Propriétés     
 
 
-        public override double LigneDeCredit
+        public   double LigneDeCredit
         {
             get { return _ligneDeCredit; }
-            set
+            private set
             {
                 if (value > 0)
                 {

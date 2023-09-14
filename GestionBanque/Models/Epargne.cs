@@ -8,6 +8,7 @@ namespace GestionBanque.Models
 {
     internal class Epargne : Compte
     {
+       
         #region Props
         public override double taux_interet
         {
@@ -19,22 +20,22 @@ namespace GestionBanque.Models
              
         }
 
-        public DateTime DateDernierRetrait { get; set; }
+        public DateTime DateDernierRetrait { get; private set; }
 
-        public override double LigneDeCredit
-        {
-            get
-            {
-                return 0; 
-            }
-
-            set
-            {
-                throw new InvalidOperationException();
-            }
-        }
+    
 
         #endregion
+
+        #region Constructors
+        public Epargne(string numero, Personne titulaire) : base(numero, titulaire)
+        {
+        }
+
+        public Epargne(string numero, Personne titulaire, double solde) : base(numero, titulaire, solde)
+        {
+        }
+        #endregion
+
 
         #region Methods
         public override void Retrait(double Montant)

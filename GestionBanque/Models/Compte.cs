@@ -15,12 +15,21 @@ namespace GestionBanque.Models
         public Personne Titulaire { get; set; }
         public abstract double taux_interet { get;  }
 
-        public abstract double LigneDeCredit
-        {
-            get;set;
-        }
+        
         #endregion
 
+        #region Constructors
+            public Compte(string numero, Personne titulaire)
+            {
+                Numero= numero;
+                Titulaire= titulaire;
+            //throw new Exception("Qué passa");
+            }
+            public Compte(string numero, Personne titulaire, double solde) : this(numero, titulaire)         
+            {             
+                Solde= solde;
+            }
+        #endregion
 
         #region Methods
         public void Depot(double Montant)

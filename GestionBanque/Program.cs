@@ -1,4 +1,5 @@
-﻿using GestionBanque.Exemples;
+﻿using GestionBanque.Exceptions;
+using GestionBanque.Exemples;
 using GestionBanque.Interfaces;
 using GestionBanque.Models;
 using System.Collections;
@@ -7,14 +8,41 @@ using System.Collections;
 Banque TfPognon = new Banque();
 TfPognon.Nom = "FricSA";
 
-Personne p1 = new Personne();
-p1.Nom = "Pendragon";
-p1.Prenom = "Arthur";
-p1.DateNaiss = DateTime.Now;
+Personne p1 = new Personne("Arthur", DateTime.Now)
+{
+	Nom = "Pendragon"
+};
+Personne P2 = new Personne( "orglub", DateTime.Now)
+{
+	Nom = "zorba"
+};
+//p1.Nom = "Pendragon";
+//p1.Prenom = "Arthur";
+//p1.DateNaiss = DateTime.Now;
+Compte c1=null;
+try
+{
+	  c1 = new Courant("BE1234", p1, 60000);
+}
 
-Compte c1 = new Courant();
-c1.Numero = "BE1234";
-c1.Titulaire = p1;
+catch (LigneDeCreditException ex)
+{
+	Console.WriteLine("Message :" + ex.Message);
+	Console.WriteLine($"InnerException: titulaire : {ex.InnerException.Message}");
+	
+}
+catch(Exception ex)
+{
+	Console.WriteLine(ex.Message);
+}
+finally
+{
+	if(c1==null)
+	{
+		c1 = new Courant("BE1234", p1);
+
+    }
+}
 c1.Depot(500);
 
 c1.Retrait(1856);
@@ -34,12 +62,7 @@ c1.Retrait(1856);
 
 
 //Autre manière d'affecter des valeurs aux propriétés après instanciation de la classe
-Compte c2 = new Epargne()
-			 {
-				 Numero = "BE456",
-				 Titulaire = p1
-			 };
-c2.Depot(500.10);
+Compte c2 = new Epargne("BE456",p1 ,500.10);
 
 
 TfPognon.Ajouter(c1);
@@ -70,7 +93,7 @@ Console.WriteLine($"Le solde du compte {c1.Numero} de {c1.Titulaire.Nom} est de 
 c1.Retrait(500);
 Console.WriteLine($"Le solde du compte {c1.Numero} de {c1.Titulaire.Nom} est de {c1.Solde}");
 
-((Courant)c1).LigneDeCredit = 500;
+//((Courant)c1).LigneDeCredit = 500; Plus possible suite au passage en private du set
 c1.Retrait(1000);
 Console.WriteLine($"Le solde du compte {c1.Numero} de {c1.Titulaire.Nom} est de {c1.Solde}");
 #endregion
